@@ -1,0 +1,37 @@
+<window title="Cadastro de Conta Bancária" border="normal" width="100%"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('contaBancaria') @init('br.com.alfa.contabancaria.controller.CadastroContaBancariaController')">
+	
+	<grid>
+		<columns>
+			<column width="20%" />
+			<column width="80%" />
+		</columns>
+		<rows>
+			<row>
+				<label value="Nome Titular" width="20%" />
+				<textbox id="txtBoxNomeTitular" width="50" value="@bind(contaBancaria.contaSelecionada.nomeTitular)" />
+			</row>
+			<row>
+				<label value="Banco" width="20%" />
+				<textbox id="txtBoxBanco" value="@bind(contaBancaria.contaSelecionada.banco)" />
+			</row>
+			<row>
+				<label value="Agência" width="20%" />
+				<textbox id="txtBoxAgencia" value="@bind(contaBancaria.contaSelecionada.agencia)" />
+			</row>
+			<row>
+				<label value="Número Conta" width="20%" />
+				<textbox id="txtBoxConta" value="@bind(contaBancaria.contaSelecionada.numero)" />
+			</row>
+			<row>
+				<cell colspan="3">
+					<button label="Salvar" onClick="@command('submit')"
+						width="100px" height="30px" />
+				</cell>
+			</row>
+		</rows>
+	</grid>
+
+
+</window>

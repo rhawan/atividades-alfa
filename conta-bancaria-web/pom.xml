@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.com.alfa</groupId>
+	<artifactId>conta-bancaria-web</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>conta-bancaria-web</name>
+	<description>
+		Projeto avaliativo Conta Bancária aula 02 módulo Desenvolvimento de Frameworks e Componentes
+		Integrantes: Rhawan Brenner, Irani Alves, Adriano Freitas, Fábio Gomes
+	</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.1.RELEASE</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<zk.spring.version>3.1.1</zk.spring.version>
+		<zk.version>8.0.0</zk.version>
+	</properties>
+
+	<dependencies>
+		
+		<!-- Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		
+		<!-- ZK Framework -->
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkbind</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zul</artifactId>
+			<version>${zk.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-jdk14</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkplus</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zhtml</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkspring-core</artifactId>
+			<version>${zk.spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>servlet-api</artifactId>
+					<groupId>javax.servlet</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<repositories>
+		<repository>
+			<id>ZK Maven</id>
+			<url>http://mavensync.zkoss.org/maven2</url>
+		</repository>
+	</repositories>
+
+</project>
