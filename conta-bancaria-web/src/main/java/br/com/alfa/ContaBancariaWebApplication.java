@@ -15,10 +15,10 @@ import org.zkoss.zk.ui.http.HttpSessionListener;
 
 @SpringBootApplication
 @ComponentScan
-public class ContaBancariaApplication extends SpringBootServletInitializer {
+public class ContaBancariaWebApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ContaBancariaApplication.class, args);
+		SpringApplication.run(ContaBancariaWebApplication.class, args);
 	}
 	
 	/*

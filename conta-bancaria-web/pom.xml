@@ -11,7 +11,7 @@
 	<name>conta-bancaria-web</name>
 	<description>
 		Projeto avaliativo Conta Bancária aula 02 módulo Desenvolvimento de Frameworks e Componentes
-		Integrantes: Rhawan Brenner, Irani Alves, Adriano Freitas, Fábio Gomes
+		Integrantes: Rhawan Brenner, Irani Alves, Adriano Freitas
 	</description>
 
 	<parent>
@@ -88,6 +88,11 @@
 					<groupId>javax.servlet</groupId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>br.com.alfa</groupId>
+			<artifactId>conta-bancaria-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

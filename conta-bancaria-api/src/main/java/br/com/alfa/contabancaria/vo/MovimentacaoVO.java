@@ -1,40 +1,18 @@
-package br.com.alfa.contabancaria.model;
+package br.com.alfa.contabancaria.vo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import br.com.alfa.contabancaria.vo.TipoMovimentacao;
-
-@Entity
-public class Movimentacao implements Serializable {
+public class MovimentacaoVO implements Serializable {
 	
 	private static final long serialVersionUID = -6598038392086700195L;
 	
-	@Id
-	@GeneratedValue
-	private Long id;
-	
 	private BigDecimal valor;
-	
-	@Enumerated(EnumType.STRING)
 	private TipoMovimentacao tipoMovimentacao;
-	
 	private LocalDateTime data;
-	
 	private String descricao;
-	
-	@ManyToOne
-	@JoinColumn(name = "conta_id")
-	private Conta conta;
+	private ContaVO conta;
 	
 	public BigDecimal getValor() {
 		return valor;
@@ -60,10 +38,10 @@ public class Movimentacao implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Conta getConta() {
+	public ContaVO getConta() {
 		return conta;
 	}
-	public void setConta(Conta conta) {
+	public void setConta(ContaVO conta) {
 		this.conta = conta;
 	}
 	
