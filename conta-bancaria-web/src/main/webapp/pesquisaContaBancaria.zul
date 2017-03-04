@@ -1,0 +1,23 @@
+<window title="Pesquisa de Conta Bancária" border="normal" width="100%"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('contaBancaria') @init('br.com.alfa.contabancaria.controller.PesquisaContaBancariaController')">
+	
+	<grid model="@load(contaBancaria.contas)">
+		<columns>
+			<column hflex="2">Banco</column>
+			<column hflex="2">Agência</column>
+			<column hflex="2">Conta</column>
+			<column hflex="2">Nome Titular</column>
+		</columns>
+		<rows sclass="narrow">
+			<row>
+				<label value="@load(each.conta.banco)" />
+				<label value="@load(each.conta.agencia)" />
+				<label value="@load(each.conta.conta)" />
+				<label value="@load(each.conta.nomeTitular)" />
+			</row>
+		</rows>
+	</grid>
+
+
+</window>
