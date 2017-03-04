@@ -1,0 +1,30 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+
+<window id="windowMovimentacao" title="Movimentação" border="normal" width="100%"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('br.com.alfa.contabancaria.controller.MovimentacaoController')">
+	
+	<button label="Nova Movimentação" autodisable="self"
+		onClick="@command('novaMovimentacao')" />
+	<separator height="20px" />
+	<grid model="@load(vm.movimentacoes)">
+		<columns>
+			<column hflex="2">Descrição</column>
+			<column hflex="2">Data</column>
+			<column hflex="2">Tipo Movimentação</column>
+			<column hflex="2">Valor</column>
+			<column hflex="2">Conta</column>
+		</columns>
+		<template name="model">
+			<row>
+				<label value="${each.descricao}" />
+				<label value="${each.dataFormatada}" />
+				<label value="${each.tipoMovimentacao}" />
+				<label value="${each.valor}" />
+				<label value="${each.conta.nomeTitular}" />
+			</row>
+		</template>
+	</grid>
+
+
+</window>

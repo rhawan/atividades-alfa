@@ -9,38 +9,27 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.alfa.contabancaria.vo.ContaVO;
+import br.com.alfa.contabancaria.vo.MovimentacaoVO;
 
 @Service
-public class ContaServiceImpl implements ContaService {
+public class MovimentacaoServiceImpl implements MovimentacaoService {
 	
-	private static final String SERVICE_NAME = "CONTA_SERVICE";
+	private static final String SERVICE_NAME = "MOVIMENTACAO_SERVICE";
 
 	@Override
-	public void salvar(ContaVO conta) throws RemoteException {
-		getContaServiceRmi().salvar(conta);
-	}
-
-	@Override
-	public List<ContaVO> listar() throws RemoteException {
-		return getContaServiceRmi().listar();
+	public void salvar(MovimentacaoVO conta) throws RemoteException {
+		getMovimentacaoServiceRmi().salvar(conta);
 	}
 
 	@Override
-	public void excluir(Long id) throws RemoteException {
-		getContaServiceRmi().excluir(id);
-		
+	public List<MovimentacaoVO> listar() throws RemoteException {
+		return getMovimentacaoServiceRmi().listar();
 	}
-	
-	@Override
-	public ContaVO consultar(Long id) throws RemoteException {
-		return getContaServiceRmi().consultar(id);
-	}
-	
-	private ContaService getContaServiceRmi() {
+
+	private MovimentacaoService getMovimentacaoServiceRmi() {
 		try {
 			Registry registry = LocateRegistry.getRegistry();
-			return (ContaService) registry.lookup(SERVICE_NAME);
+			return (MovimentacaoService) registry.lookup(SERVICE_NAME);
 		} catch (AccessException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

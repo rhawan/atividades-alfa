@@ -3,6 +3,9 @@ package br.com.alfa.contabancaria.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import br.com.alfa.contabancaria.vo.TipoMovimentacao;
 
 public class Movimentacao implements Serializable {
 	
@@ -10,9 +13,9 @@ public class Movimentacao implements Serializable {
 	
 	private BigDecimal valor;
 	private TipoMovimentacao tipoMovimentacao;
-	private LocalDateTime data;
+	private LocalDateTime data = LocalDateTime.now();
 	private String descricao;
-	private Conta conta;
+	private Conta conta;	
 	
 	public BigDecimal getValor() {
 		return valor;
@@ -26,11 +29,18 @@ public class Movimentacao implements Serializable {
 	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
 		this.tipoMovimentacao = tipoMovimentacao;
 	}
-	public LocalDateTime getData() {
-		return data;
+	public String getDataFormatada() {
+		if(data != null) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+			return data.format(formatter);
+		}
+		return null;
 	}
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+	public LocalDateTime getData() {
+		return data;
 	}
 	public String getDescricao() {
 		return descricao;

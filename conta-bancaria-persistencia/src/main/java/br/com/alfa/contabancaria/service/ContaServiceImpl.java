@@ -37,21 +37,7 @@ public class ContaServiceImpl extends UnicastRemoteObject implements ContaServic
 			Registry registry = LocateRegistry.createRegistry(1099);
 			registry.rebind(SERVICE_NAME, this);
 			System.out.println(SERVICE_NAME + " carregado no servidor.");
-			
-			Conta c1 = new Conta();
-			c1.setAgencia("1234");
-			c1.setBanco("Itaú");
-			c1.setNumero("21");
-			c1.setNomeTitular("JOÃO SILVA SAURO");
-			
-			Conta c2 = new Conta();
-			c2.setAgencia("6789");
-			c2.setBanco("Bradesco");
-			c2.setNumero("54");
-			c2.setNomeTitular("MARIA JOANINHA");
-			
-			contaRepository.save(c1);
-			contaRepository.save(c2);
+			this.inserirContasTeste();
 		} catch (AccessException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -61,18 +47,12 @@ public class ContaServiceImpl extends UnicastRemoteObject implements ContaServic
 	
 	@Override
 	public void salvar(ContaVO conta) throws RemoteException {
-		Conta c = new Conta();
-		c.setAgencia(conta.getAgencia());
-		c.setBanco(conta.getBanco());
-		c.setNumero(conta.getNumero());
-		c.setNomeTitular(conta.getNomeTitular());
-		contaRepository.save(c);
-		
+		contaRepository.save(toModel(conta));
 	}
 
 	@Override
-	public void excluir(ContaVO contaVO) throws RemoteException {
-		contaRepository.delete(toModel(contaVO));
+	public void excluir(Long id) throws RemoteException {
+		contaRepository.delete(id);
 	}
 	
 	@Override
@@ -84,22 +64,46 @@ public class ContaServiceImpl extends UnicastRemoteObject implements ContaServic
 		 return contasVO;
 	}
 	
-	private Conta toModel(ContaVO contaVO) {
-		Conta conta = new Conta();
-		conta.setAgencia(contaVO.getAgencia());
-		conta.setBanco(contaVO.getBanco());
-		conta.setNumero(contaVO.getNumero());
-		conta.setNomeTitular(contaVO.getNomeTitular());
-		return conta;
+	@Override
+	public ContaVO consultar(Long id) throws RemoteException {
+		return toVO(contaRepository.findOne(id));
+	}
+	
+	private void inserirContasTeste() {
+		Conta c1 = new Conta();
+		c1.setAgencia("1234");
+		c1.setBanco("Itaú");
+		c1.setNumero("21");
+		c1.setNomeTitular("JOÃO SILVA SAURO");
+		
+		Conta c2 = new Conta();
+		c2.setAgencia("6789");
+		c2.setBanco("Bradesco");
+		c2.setNumero("54");
+		c2.setNomeTitular("MARIA JOANINHA");
+		
+		contaRepository.save(c1);
+		contaRepository.save(c2);
 	}
 	
 	private ContaVO toVO(Conta conta) {
 		ContaVO contaVO = new ContaVO();
+		contaVO.setId(conta.getId());
 		contaVO.setAgencia(conta.getAgencia());
 		contaVO.setBanco(conta.getBanco());
 		contaVO.setNumero(conta.getNumero());
 		contaVO.setNomeTitular(conta.getNomeTitular());
 		return contaVO;
+	}
+	
+	private Conta toModel(ContaVO contaVO) {
+		Conta conta = new Conta();
+		conta.setId(contaVO.getId());
+		conta.setAgencia(contaVO.getAgencia());
+		conta.setBanco(contaVO.getBanco());
+		conta.setNumero(contaVO.getNumero());
+		conta.setNomeTitular(contaVO.getNomeTitular());
+		return conta;
 	}
 	
 }

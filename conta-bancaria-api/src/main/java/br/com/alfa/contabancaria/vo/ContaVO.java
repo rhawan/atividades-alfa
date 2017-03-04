@@ -6,11 +6,19 @@ public class ContaVO implements Serializable {
 	
 	private static final long serialVersionUID = -7262321978508187311L;
 	
+	private Long id;
 	private String nomeTitular;
 	private String numero;
 	private String banco;
 	private String agencia;
 	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNomeTitular() {
 		return nomeTitular;
 	}

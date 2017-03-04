@@ -19,6 +19,12 @@ public class Conta implements Serializable {
 	private String banco;
 	private String agencia;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNomeTitular() {
 		return nomeTitular;
 	}

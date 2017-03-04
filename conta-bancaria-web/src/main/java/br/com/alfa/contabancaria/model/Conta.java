@@ -6,11 +6,19 @@ public class Conta implements Serializable {
 	
 	private static final long serialVersionUID = -128747010897663148L;
 	
+	private Long id;
 	private String nomeTitular;
 	private String numero;
 	private String banco;
 	private String agencia;
 	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNomeTitular() {
 		return nomeTitular;
 	}
@@ -36,6 +44,9 @@ public class Conta implements Serializable {
 		this.agencia = agencia;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return String.format("%s - (%s - %s)", nomeTitular, agencia, numero);
+	}
 	
 }

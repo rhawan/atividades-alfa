@@ -1,0 +1,11 @@
+<zk>
+	<menubar autodrop="true">
+		<menu label="Conta Bancária">
+			<menupopup>
+				<menuitem label="Cadastro" href="pesquisaContaBancaria.zul" />
+				<menuitem label="Movimentação" href="movimentacao.zul" />
+			</menupopup>
+		</menu>
+	</menubar>
+	<separator height="20px" />
+</zk>

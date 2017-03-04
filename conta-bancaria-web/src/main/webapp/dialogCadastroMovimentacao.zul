@@ -1,0 +1,43 @@
+<window id="modalDialog" title="Nova Movimentação" border="normal" width="460px"
+    apply="org.zkoss.bind.BindComposer"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp"
+    viewModel="@id('movimentacao') @init('br.com.alfa.contabancaria.controller.MovimentacaoController')">
+    
+    <vlayout>
+        <grid>
+		<columns>
+			<column width="20%" />
+			<column width="80%" />
+		</columns>
+		<rows>
+			<row>
+				<label value="Descrição" width="20%" />
+				<textbox id="txtBoxDescricao" width="50"
+					value="@bind(movimentacao.movimentacao.descricao)" />
+			</row>
+			<row>
+				<label value="Tipo Movimentação" width="20%" />
+				<combobox model="@load(movimentacao.tiposMovimentacao)"
+					selectedItem="@bind(movimentacao.movimentacao.tipoMovimentacao)" />
+			</row>
+			<row>
+				<label value="Valor" width="20%" />
+				<decimalbox id="txtBoxValor"
+					value="@bind(movimentacao.movimentacao.valor)" />
+			</row>
+			<row>
+				<label value="Conta" width="20%" />
+				<combobox model="@load(movimentacao.contas)"
+					selectedItem="@bind(movimentacao.movimentacao.conta)" />
+			</row>
+			<row>
+				<cell colspan="3">
+					<button label="Salvar" onClick="@command('submit')"
+						width="100px" height="30px" />
+				</cell>
+			</row>
+		</rows>
+        </grid>
+    </vlayout>
+</window>

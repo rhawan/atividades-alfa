@@ -12,6 +12,8 @@ public interface ContaService extends Remote {
 	
 	List<ContaVO> listar() throws RemoteException;
 	
-	void excluir(ContaVO conta) throws RemoteException;
+	void excluir(Long id) throws RemoteException;
+	
+	ContaVO consultar(Long id) throws RemoteException;
 
 }

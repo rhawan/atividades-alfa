@@ -1,3 +1,5 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+
 <window title="Cadastro de Conta Bancária" border="normal" width="100%"
 	apply="org.zkoss.bind.BindComposer"
 	viewModel="@id('contaBancaria') @init('br.com.alfa.contabancaria.controller.CadastroContaBancariaController')">
