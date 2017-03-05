@@ -10,9 +10,9 @@ O projeto é composto por 3 artefatos:
  
  Para executar o sistema, seguir os passos abaixo: (Os passos abaixo foram executados pela IDE eclipse) <br />
  1 - Realizar o clone do repositório, importar os projetos como maven project e aguardar o download das dependências; <br />
- 2 - Configurar a porta RMI do servidor (arquivo application.properties do projeto conta-bancaria-persistencia), por padrão está 1099;<br />
+ 2 - Configurar a porta RMI do servidor (arquivo application.properties do projeto conta-bancaria-persistencia, property rmi.port), por padrão está 1099;<br />
  3 - Executar a classe ContaBancariaPersistenciaApplication.java como Java Project; <br />
- 4 - Configurar o host e porta RMI do cliente (arquivo application.properties do projeto conta-bancaria-web), por padrão está 1099 e localhost; <br />
+ 4 - Configurar o host e porta RMI do cliente (arquivo application.properties do projeto conta-bancaria-web, properties rmi.port e rmi.host), por padrão está 1099 e localhost; <br />
  5 - Executar a classe ContaBancariaWebApplication.java como Java Project; <br />
  6 - Acessar a página http://localhost:8080/pesquisaContaBancaria.zul; <br />
  7 - No menu superior é possível alternar entre as funcionalidades do sistema: Cadastro de Conta Bancária e Movimentação; <br />
