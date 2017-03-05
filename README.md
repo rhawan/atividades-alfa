@@ -8,6 +8,8 @@ O projeto é composto por 3 artefatos:
  
  Os projetos foram criados no formato Spring Boot, que facilita sua criação, execução e deploy. Foram utilizados as seguintes API's: Hibernate, Spring, ZK, RMI
  
+ O projeto conta-bancaria-persistencia utiliza o banco de dados H2 em tempo de execução, portanto ao realizar o stop da aplicação, os dados serão apagados.
+ 
  Para executar o sistema, seguir os passos abaixo: (Os passos abaixo foram executados pela IDE eclipse) <br />
  1 - Realizar o clone do repositório, importar os projetos como maven project e aguardar o download das dependências; <br />
  2 - Configurar a porta RMI do servidor (arquivo application.properties do projeto conta-bancaria-persistencia, property rmi.port), por padrão está 1099;<br />
