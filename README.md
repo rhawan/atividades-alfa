@@ -9,9 +9,9 @@ O projeto é composto por 3 artefatos:
  Os projetos foram criados no formato Spring Boot, que facilita sua criação, execução e deploy. Foram utilizados as seguintes API's: Hibernate, Spring, ZK, RMI
  
  Para executar o sistema, seguir os passos abaixo:
- 1 - Configurar a porta RMI do servidor (arquivo application.properties do projeto conta-bancaria-persistencia), por padrão está 1099;
- 2 - Executar a classe ContaBancariaPersistenciaApplication.java como Java Project;
- 3 - Configurar o host e porta RMI do cliente (arquivo application.properties do projeto conta-bancaria-web), por padrão está 1099 e localhost;
- 4 - Executar a classe ContaBancariaWebApplication.java como Java Project;
- 5 - Acessar a página http://localhost:8080/pesquisaContaBancaria.zul;
- 6 - No menu superior é possível alternar entre as funcionalidades do sistema: Cadastro de Conta Bancária e Movimentação;
+ 1 - Configurar a porta RMI do servidor (arquivo application.properties do projeto conta-bancaria-persistencia), por padrão está 1099;<br />
+ 2 - Executar a classe ContaBancariaPersistenciaApplication.java como Java Project; <br />
+ 3 - Configurar o host e porta RMI do cliente (arquivo application.properties do projeto conta-bancaria-web), por padrão está 1099 e localhost; <br />
+ 4 - Executar a classe ContaBancariaWebApplication.java como Java Project; <br />
+ 5 - Acessar a página http://localhost:8080/pesquisaContaBancaria.zul; <br />
+ 6 - No menu superior é possível alternar entre as funcionalidades do sistema: Cadastro de Conta Bancária e Movimentação; <br />
