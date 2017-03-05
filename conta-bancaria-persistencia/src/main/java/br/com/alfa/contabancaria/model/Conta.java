@@ -1,10 +1,13 @@
 package br.com.alfa.contabancaria.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Conta implements Serializable {
@@ -18,6 +21,8 @@ public class Conta implements Serializable {
 	private String numero;
 	private String banco;
 	private String agencia;
+	@OneToMany(mappedBy = "conta", cascade=CascadeType.ALL)
+	private List<Movimentacao> movimentacoes;
 	
 	public Long getId() {
 		return id;
@@ -49,7 +54,11 @@ public class Conta implements Serializable {
 	public void setAgencia(String agencia) {
 		this.agencia = agencia;
 	}
-	
-	
+	public List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
+	}
+	public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+		this.movimentacoes = movimentacoes;
+	}
 	
 }

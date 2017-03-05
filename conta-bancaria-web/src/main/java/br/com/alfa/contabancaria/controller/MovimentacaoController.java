@@ -1,16 +1,15 @@
 package br.com.alfa.contabancaria.controller;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -54,11 +53,12 @@ public class MovimentacaoController extends SelectorComposer<Component> {
 	@Command(value="submit")
 	public void salvar() {
 		try {
+			this.validarCamposObrigatórios();
 			movimentacaoService.salvar(toVO(movimentacao));
 			UtilMessageZK.showMessageInfo("Sucesso!");
-			Executions.forward("/movimentacao.zul");
 		} catch (Exception e) {
 			e.printStackTrace();
+			UtilMessageZK.showMessageError("Erro ao salvar movimentação\n" + e.getMessage());
 		}
 	}
 	
@@ -98,6 +98,22 @@ public class MovimentacaoController extends SelectorComposer<Component> {
 		window = (Window) Executions.createComponents("dialogCadastroMovimentacao.zul", null, null);
 		window.doModal();
 	}
+	
+	private void validarCamposObrigatórios() {
+		if(movimentacao != null && StringUtils.isEmpty(movimentacao.getDescricao())) {
+			throw new IllegalArgumentException("Descrição é obrigatório");
+		}
+		if(movimentacao != null && StringUtils.isEmpty(movimentacao.getTipoMovimentacao())) {
+			throw new IllegalArgumentException("Tipo Movimentação é obrigatório");
+		}
+		if(movimentacao != null && StringUtils.isEmpty(movimentacao.getValor())) {
+			throw new IllegalArgumentException("Valor é obrigatório");
+		}
+		if(movimentacao != null && movimentacao.getConta() == null) {
+			throw new IllegalArgumentException("Conta Bancária é obrigatório");
+		}
+	}
+
 	
 	private MovimentacaoVO toVO(Movimentacao movimentacao) {
 		MovimentacaoVO mVO = new MovimentacaoVO();

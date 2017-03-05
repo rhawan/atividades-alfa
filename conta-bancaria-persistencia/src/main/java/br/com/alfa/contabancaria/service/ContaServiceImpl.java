@@ -11,7 +11,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import br.com.alfa.contabancaria.model.Conta;
 import br.com.alfa.contabancaria.repository.ContaRepository;
@@ -26,6 +28,9 @@ public class ContaServiceImpl extends UnicastRemoteObject implements ContaServic
 	
 	@Autowired
 	private ContaRepository contaRepository;
+	
+	@Value("${rmi.port}")
+	private String rmiPortProperty;
 
 	public ContaServiceImpl() throws RemoteException {
 		super();
@@ -34,7 +39,11 @@ public class ContaServiceImpl extends UnicastRemoteObject implements ContaServic
 	@PostConstruct
 	public void init() {
 		try {
-			Registry registry = LocateRegistry.createRegistry(1099);
+			if(StringUtils.isEmpty(rmiPortProperty)) {
+				System.err.println("A propriedade rmi.port não está definida corretamente no arquivo application.properties!!");
+				return;
+			}
+			Registry registry = LocateRegistry.createRegistry(Integer.parseInt(rmiPortProperty));
 			registry.rebind(SERVICE_NAME, this);
 			System.out.println(SERVICE_NAME + " carregado no servidor.");
 			this.inserirContasTeste();
